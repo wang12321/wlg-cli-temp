@@ -1,0 +1,20 @@
+<template>
+  <div />
+</template>
+
+<script>
+import { start } from 'qiankun'
+export default {
+  name: 'QianKun',
+  mounted() {
+    if (!window.qiankunStarted) {
+      window.qiankunStarted = true
+      start()
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>

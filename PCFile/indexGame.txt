@@ -1,0 +1,133 @@
+<template>
+  <div>
+    <ul class="game-list clearfix">
+      <li v-for="(item,index) in allData" :key="'game_' + index" class="game-item">
+        <div v-if="item.category_id" @click="getRouterPath(item.game_id)">
+          <span class="game-id"> {{ 'ID: '+item.game_id }}</span>
+          <span class="game-name">{{ item.game_name }}</span>
+        </div>
+        <div v-else class="show-or-hide" @click="showOrHideGameIds">
+          <span class="game-id"> {{ item.game_id }}</span>
+          <span class="game-name">{{ item.game_name }}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+import { mapGetters } from 'vuex'
+import { deepClone } from '@/utils/index'
+
+export default {
+  data() {
+    return {
+      hideGameIds: true,
+      hasPushedHideBtn: false,
+      allData: []
+    }
+  },
+  computed: {
+      ...mapGetters([
+        'gamelist'
+      ])
+  },
+  mounted() {
+    // 获取游戏平台列表信息
+    this.allGameIdInfo = deepClone(this.gamelist.sort(
+      (a, b) => a.game_id - b.game_id
+    ))
+    this.allData = deepClone(this.allGameIdInfo.slice(0, 10))
+
+    // 根据权限在页面展示平台列表
+    this.showPermissionGameList()
+  },
+  methods: {
+    showPermissionGameList() {
+      this.allData.push({
+        game_id: '...',
+        game_name: '更多'
+      })
+    },
+
+    showOrHideGameIds() {
+      // 显示所有
+      if (this.hideGameIds) {
+        this.allData = deepClone(this.allGameIdInfo)
+        this.allData.push({
+          game_id: '↑',
+          game_name: '隐藏不常用'
+        })
+        this.hideGameIds = false
+      } else {
+        // 仅显示不常用
+        this.allData = deepClone(this.allGameIdInfo.slice(0, 10))
+        this.allData.push({
+          game_id: '...',
+          game_name: '更多'
+        })
+        this.hideGameIds = true
+      }
+    },
+    getRouterPath(gameId) {
+      this.$store.commit('permission/SET_GameId', gameId)
+      this.$store.commit('permission/SET_ROUTES', this.$store.state.permission.addRoutes)
+      this.$router.push({ path: 'system/user', params: { id: gameId }})
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+.game-list {
+  list-style:none;
+  .game-item {
+    width: 120px;
+    float: left;
+    margin: 10px;
+    img {
+      width: 120px;
+      height: 120px;
+      background: #ccc;
+    }
+    span {
+      display: block;
+      text-align: center;
+      &.game-id {
+        font-weight: bold;
+        background-color: #94b0d2;
+        color: #480202;
+        font-size: 14px;
+        height: 24px;
+        line-height: 24px;
+        transition: all 0.15s linear;
+      }
+      &.game-id.not-active{
+        background-color: rgba(148,176,210,0.4);
+      }
+      &.game-name {
+        background: #e96800;
+        color: #fff;
+        font-size: 16px;
+        height: 34px;
+        line-height: 34px;
+      }
+      &.game-name.not-active{
+        background: rgba(233,104,0,0.4);
+      }
+    }
+    transition: all 0.15s linear;
+    .show-or-hide{
+      cursor: pointer;
+    }
+    &:hover {
+      .game-id {
+        background: #680404;
+        color: #fff;
+      }
+      transform: translateY(-5px);
+      box-shadow: 0px 5px 7px -3px #000000;
+    }
+  }
+}
+</style>

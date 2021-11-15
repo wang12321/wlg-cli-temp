@@ -1,0 +1,152 @@
+#!/usr/bin/env node
+const program = require('commander')
+program.version(require('../package').version)
+program
+    .command('init <name>')
+    .description('初始化项目')
+    .action(require('../lib/init.js'))
+    .usage('<name> 初始化项目') //-h 打印的用户提示
+    .alias('i')//命令别名
+
+program
+    .command('addNew')
+    .description('添加菜单new！标志')
+    .action(require('../lib/addNew.js'))
+    .usage('添加菜单new！标志') //-h 打印的用户提示
+    .alias('addN')//命令别名
+
+program
+    .command('add [name]')
+    .description('添加集合,name可选可配')
+    .action(require('../lib/add.js'))
+    .usage('[name] 添加集合,name可选可配,或者 ff add 选择功能') //-h 打印的用户提示
+    .option('New', '添加菜单new！标志')//选项
+    .option('TagsView', '添加导航标签(由Layout布局决定)')
+    .option('Breadcrumb', '添加面包屑')
+    .option('GameShow', '添加展示游戏平台')
+    .option('UnifiedLogin', '接入统一登入')
+    .option('SwitchEnvironment', '添加切换环境按钮')
+    .option('HeaderSearch', '添加菜单搜索')
+
+program
+    .command('addBreadcrumb')
+    .description('添加面包屑')
+    .action(require('../lib/addBreadcrumb.js'))
+    .usage('添加面包屑') //-h 打印的用户提示
+    .alias('addB')//命令别名
+program
+    .command('addHeaderSearch')
+    .description('添加菜单搜索')
+    .action(require('../lib/addHeaderSearch.js'))
+    .usage('添加菜单搜索') //-h 打印的用户提示
+    .alias('addH')//命令别名
+program
+    .command('addSwitchEnvironment')
+    .description('添加切换环境按钮')
+    .action(require('../lib/addSwitchEnvironment.js'))
+    .usage('添加切换环境按钮') //-h 打印的用户提示
+    .alias('addS')//命令别名
+
+program
+    .command('addUnifiedLogin')
+    .description('接入统一登入')
+    .action(require('../lib/addUnifiedLogin.js'))
+    .usage('接入统一登入') //-h 打印的用户提示
+    .alias('addU')//命令别名
+
+program
+    .command('addGameShow')
+    .description('添加展示游戏平台')
+    .action(require('../lib/addGameShow.js'))
+    .usage('添加展示游戏平台') //-h 打印的用户提示
+    .alias('addG')//命令别名
+
+program
+    .command('updateLayout')
+    .description('修改layout布局')
+    .action(require('../lib/updateLayout.js'))
+    .usage('修改layout布局') //-h 打印的用户提示
+    .alias('upL')//命令别名
+
+program
+    .command('addNavBarMenu')
+    .description('添加导航栏显示一级目录')
+    .action(require('../lib/addNavBarMenu.js'))
+    .usage('添加导航栏显示一级目录') //-h 打印的用户提示
+    .alias('addNBM')//命令别名
+
+program
+    .command('addNewEnvironment <name>')
+    .description('添加新环境')
+    .action(require('../lib/addNewEnvironment.js'))
+    .usage('<name> 添加新环境') //-h 打印的用户提示
+    .alias('addENV')//命令别名
+
+program
+    .command('addTagsView')
+    .description('添加导航标签')
+    .action(require('../lib/addTagsView.js'))
+    .usage('添加导航标签') //-h 打印的用户提示
+    .alias('addT')//命令别名
+
+program
+    .command('deleteNavBarMenu')
+    .description('删除导航栏显示一级目录')
+    .action(require('../lib/deleteNavBarMenu.js'))
+    .usage('删除导航栏显示一级目录') //-h 打印的用户提示
+    .alias('delNBM')//命令别名
+
+program
+    .command('deleteTagsViews')
+    .description('删除导航标签')
+    .action(require('../lib/deleteTagsViews.js'))
+    .usage('删除导航标签') //-h 打印的用户提示
+    .alias('delT')//命令别名
+
+program
+    .command('addTemp <name>')
+    .description('初始化模板文件，里面选择模板')
+    .action(require('../lib/temp.js'))
+    .usage('<name> 初始化模板文件 \n cd到目标文件 name不加.vue是目录文件夹下建立index.vue \n 如果需要在已有文件下新增vue文件，name可以是路径。\n 如（sysetm/user.vue）') //-h 打印的用户提示
+    .alias('temp')//命令别名
+
+program
+    .command('sentry')
+    .description('接入sentry')
+    .action(require('../lib/sentry.js'))
+    .usage('接入sentry') //-h 打印的用户提示
+    .alias('s')//命令别名
+
+program
+    .command('qiankun')
+    .description('接入微前端')
+    .action(require('../lib/qiankun.js'))
+    .usage('接入微前端') //-h 打印的用户提示
+    .alias('qk')//命令别名
+
+// 添加一些有用的信息到help选项
+program.on('--help', () => {
+    console.log()
+    console.log(`1、详细信息可以使用-h来展示 例如：ff2 add -h \n2、这里面命令包含的PC和Mobile，如果是Mobile会标注说明，未标注的是PC。PC和Mobile命令会对其校验
+    `)
+    console.log()
+})
+
+program
+    .command('list')
+    .description('查看命令说明')
+    .alias('l')//命令别名
+    .action(()=>{
+        console.log(`
+        init|i <name> 初始化项目
+        addTemp|temp <name> 初始化模板文件 
+        add [name] 添加功能  
+        addNewEnvironment|addENV <name> 添加新环境
+        updateLayout|upL 修改layout布局
+        deleteTagsViews|delT 删除导航标签
+        sentry|s 接入sentry
+        qiankun|qk 接入微前端
+        `)
+    })
+
+program.parse(process.argv)

@@ -1,0 +1,31 @@
+{
+  "name": "wlg-cli-temp",
+  "version": "2.2.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "ff2": "./bin/ff.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli"
+  ],
+  "author": "1396933943@qq.com",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "clear": "^0.1.0",
+    "commander": "^7.1.0",
+    "download-git-repo": "^3.0.2",
+    "figlet": "^1.5.0",
+    "handlebars": "^4.7.7",
+    "inquirer": "^8.0.0",
+    "node-cmd": "^5.0.0",
+    "open": "^8.0.2",
+    "ora": "^5.4.0",
+    "prettier": "^2.3.2",
+    "runjs": "^4.4.2"
+  }
+}
