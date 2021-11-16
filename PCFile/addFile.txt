@@ -40,7 +40,7 @@ import { REQUIRED } from '@/utils/Reg/validate'
 export default {
   name: 'Index',
   meta: {
-    title: '事件验收',
+    title: '增删基础模板',
     icon: 'form',
     sortIndex: 2
   },
