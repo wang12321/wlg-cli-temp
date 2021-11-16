@@ -1,113 +1,175 @@
 <template>
-  <CURDexample
-    :table-column="tableColumn"
-    :table-data="tableData"
-    :formlist="formlist"
-    :form-data="formData"
-    :dialog-form-data.sync="dialogFormData"
-    :is-advanced="isAdvanced"
-    :page-data="pageData"
-    @searchSubmit="searchSubmit"
-    @sortchange="sortchange"
-    @submitAdd="submitAdd"
-    @submitEdit="submitEdit"
-    @reloadData="reloadData"
-    @deleteData="deleteData"
-  />
+  <div>
+    <el-container>
+      <el-header style="height: auto">
+        <search-form
+          :form-options="formOptions"
+          :form-data="formData"
+          @submit="submit"
+        >
+          <template v-slot:button>
+            <el-button type="primary" @click="buttonAction">新建</el-button>
+          </template>
+        </search-form>
+      </el-header>
+      <el-main>
+        <TableComponent
+          :table-data="tableData"
+          :table-column="tableColumn"
+          :options="options"
+          :operates="operates"
+        />
+        <Pagination :key="pageKey" :page-data="pageData" @reloadData="reloadData" />
+      </el-main>
+    </el-container>
+    <el-dialog :visible.sync="isShowDialogNode" title="新建" width="80%">
+      <dialog-form
+        :form-list="formList"
+        :form-data="formData"
+        :rules="rules"
+        @submit="submitSave"
+        @CANCEL="CANCEL"
+      />
+    </el-dialog>
+  </div>
 </template>
 
 <script>
+import { REQUIRED } from '@/utils/Reg/validate'
+
 export default {
   name: 'Index',
   meta: {
-    title: '增删改查模板',
+    title: '事件验收',
     icon: 'form',
-    permissionArray: [1, 2, 3],
-    sortIndex: 1,
-    newTime: '2099-05-20'
+    sortIndex: 2
   },
   data() {
     return {
-      pageData: { total: 100, page: 1, rows: 20 },
-      isAdvanced: true,
-      formData: {},
-      dialogFormData: {},
-      formlist: [
-        { search: true, titleShow: true, clearable: true, title: '年份', key: 'year', type: 'year' },
-        { search: true, titleShow: true, clearable: true, title: '日期', key: 'date', type: 'date' }
-      ],
+      isShowDialogNode: false,
+      pageKey: 0, // 刷新分页组件key
+      total: 0,
+      rules: {
+        cn_name: [
+          REQUIRED('请输入中文名')
+        ]
+      },
+      formData: {
+      },
+      operates: {
+        isButton: false,
+        width: '180px',
+        label: '操作',
+        align: 'left',
+        list: [
+          {
+            label: '编辑',
+            show: true,
+            btnType: 'danger',
+            method: (index, row) => {
+              console.log(index, row)
+            }
+          },
+          {
+            label: '确定删除',
+            show: true,
+            btnType: 'danger',
+            type: 'delete',
+            method: (index, row) => {
+              console.log(index, row)
+            }
+          }
+        ]
+      },
+      tableData: [{
+        id: 1,
+        name: '测试',
+        type: 'click',
+        yData: 123,
+        describe: ''
+      }],
       tableColumn: [
         {
-          label: '名称',
-          prop: 'tzmc',
+          label: 'ButtonID',
+          prop: 'id',
+          align: 'left'
+        },
+        {
+          label: '别名',
+          prop: 'name',
           align: 'left',
-          add: true,
-          search: true,
-          rules: true,
-          placeholder: '请输入名称',
-          type: 'input',
-          isAdvanced: true
-        }, {
-          label: '权限',
-          prop: 'gxlx',
-          align: 'left',
-          add: true,
-          search: true,
-          type: 'select',
-          options: [{ value: '1', label: '是' }, { value: '2', label: '否' }],
-          optionLabel: 'label',
-          optionValue: 'value',
-          render: (h, params) => {
-            return h('span', { style: 'color: dodgerblue' }, params.row.gxlx)
-          }
-        }, {
-          label: '创建时间',
-          prop: 'lrsj',
           formatter: (row) => {
-            return `<span style="color: dodgerblue;">${row.lrsj}</span>`
+            return `<span style="color: red">${row.name}</span>`
           }
+        },
+        {
+          label: '事件类型',
+          prop: 'type',
+          align: 'left'
         }, {
-          label: '更新时间',
-          prop: 'xgsj'
+          label: '昨日数据',
+          prop: 'yData',
+          align: 'left'
+        }, {
+          label: '描述',
+          prop: 'describe',
+          align: 'left'
         }
       ],
-      tableData: [{
-        tzmc: '游戏',
-        lrsj: '2020-02-02',
-        xgsj: '2020-03-03',
-        gxlx: '全平台'
-      },
-      {
-        tzmc: '游戏1',
-        lrsj: '2020-02-02',
-        xgsj: '2020-03-03',
-        gxlx: '全平台'
-      }]
+      options: {
+        loading: false,
+        border: true
+      }
+    }
+  },
+  computed: {
+    pageData() {
+      return { total: this.total, page: 1, rows: 20 }
+    },
+    formList() {
+      return [
+        { title: '昵称', key: 'cn_name', type: 'input', clearable: true },
+        { titleShow: true, title: '包名', key: 'unionType', type: 'select', options: [{ value: 'all', label: '全部' }, { value: '1', label: '包名1' }, { value: '2', label: '包名2' }], label: 'label', value: 'value' },
+        { title: '备注', clearable: true, key: 'remark', type: 'textarea' }
+      ]
+    },
+    formOptions() {
+      return [
+        { titleShow: true, title: '应用名', placeholder: '应用名', key: 'object_id', type: 'input', clearable: true },
+        { titleShow: true, title: '包名', key: 'unionType', type: 'select', options: [{ value: 'all', label: '全部' }, { value: '1', label: '包名1' }, { value: '2', label: '包名2' }], label: 'label', value: 'value' }
+      ]
     }
   },
   mounted() {
+    this.updata()
   },
   methods: {
-    deleteData() {
-      alert('删除')
+    buttonAction() {
+      this.isShowDialogNode = true
     },
-    searchSubmit(data) {
-      console.log(data)
-      alert('查询了')
+    CANCEL() {
+      this.isShowDialogNode = false
     },
-    sortchange(e) {
-      console.log(e)
-      alert(e.column.label + '排序')
+    submitSave() {
+      this.isShowDialogNode = false
     },
-    submitAdd(data) {
-      console.log(data)
-      alert('新增了')
+    handleSelectionChange(val) {
+      console.log(val)
     },
-    submitEdit() {
-      alert('编辑了')
+    // 数据请求
+    updata() {
+      this.total = 100
+      this.roundCount = 200
     },
+    // 查询
+    submit() {
+      this.pageData.page = 1
+      this.pageKey += 1
+      this.updata()
+    },
+    // 分页
     reloadData() {
-      alert('当前页码' + this.pageData.page)
+      this.updata()
     }
   }
 }
@@ -116,4 +178,3 @@ export default {
 <style scoped>
 
 </style>
-

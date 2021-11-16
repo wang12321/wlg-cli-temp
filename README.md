@@ -67,6 +67,5 @@ ff2 addNewEnvironment|addENV <name> 添加新环境
 
 3、GitHub下载慢可设置代理
 
-## 2.2.1 版本
-1、修改基础模板
-
+## 2.2.2 版本
+1、完善基础模板
