@@ -62,5 +62,11 @@ ff2 addNewEnvironment|addENV <name> 添加新环境
 
 ## 2.2.0 版本
 1、将私有库下载地址隐藏改为输入方式
+
 2、开放公开库GitHub,如果不输入下载地址，默认使用GitHub
+
 3、GitHub下载慢可设置代理
+
+## 2.2.1 版本
+1、修改基础模板
+
