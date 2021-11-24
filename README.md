@@ -1,5 +1,9 @@
 wlg-cli-temp 是wlg-cli 升级版
 目前wlg-cli已下架，全部使用wlg-cli-temp
+
+环境配置：node > 10
+npm >= 6.7
+
 1、全局安装
 ```
 npm install -g wlg-cli-temp
@@ -69,3 +73,6 @@ ff2 addNewEnvironment|addENV <name> 添加新环境
 
 ## 2.2.3 版本
 1、完善基础模板
+
+## 2.2.4 版本
+1、解决windows \n报错的问题
