@@ -74,5 +74,5 @@ ff2 addNewEnvironment|addENV <name> 添加新环境
 ## 2.2.3 版本
 1、完善基础模板
 
-## 2.2.4 版本
+## 2.2.5 版本
 1、解决windows \n报错的问题
