@@ -23,7 +23,7 @@ init <name> 初始化项目
 
 addTemp <name> 初始化模板文件
 
-add [name] 添加功能 
+add [name] 添加功能
 
 updateLayout 修改layout布局
 
@@ -39,7 +39,7 @@ qiankun 接入微前端
 
 
 ## 1.3.0 版本
-1、加入mobile下载链接 
+1、加入mobile下载链接
 
 2、增加命名别名，优化命令信息
 
@@ -76,3 +76,7 @@ ff2 addNewEnvironment|addENV <name> 添加新环境
 
 ## 2.2.5 版本
 1、解决windows \n报错的问题
+
+## 2.2.6 版本
+1、解决cloneMobile问题
+
