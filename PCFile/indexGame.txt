@@ -28,9 +28,9 @@ export default {
     }
   },
   computed: {
-      ...mapGetters([
-        'gamelist'
-      ])
+    ...mapGetters([
+      'gamelist'
+    ])
   },
   mounted() {
     // 获取游戏平台列表信息
@@ -80,53 +80,63 @@ export default {
 
 <style lang="scss">
 .game-list {
-  list-style:none;
+  list-style: none;
+
   .game-item {
-    width: 120px;
     float: left;
+    width: 120px;
     margin: 10px;
+    transition: all .15s linear;
+
     img {
       width: 120px;
       height: 120px;
       background: #ccc;
     }
+
     span {
       display: block;
       text-align: center;
+
       &.game-id {
-        font-weight: bold;
-        background-color: #94b0d2;
-        color: #480202;
-        font-size: 14px;
         height: 24px;
+        font-size: 14px;
+        font-weight: bold;
         line-height: 24px;
-        transition: all 0.15s linear;
+        color: #480202;
+        background-color: #94b0d2;
+        transition: all .15s linear;
       }
-      &.game-id.not-active{
-        background-color: rgba(148,176,210,0.4);
+
+      &.game-id.not-active {
+        background-color: rgba(148,176,210,.4);
       }
+
       &.game-name {
-        background: #e96800;
-        color: #fff;
-        font-size: 16px;
         height: 34px;
+        font-size: 16px;
         line-height: 34px;
+        color: #fff;
+        background: #e96800;
       }
-      &.game-name.not-active{
-        background: rgba(233,104,0,0.4);
+
+      &.game-name.not-active {
+        background: rgba(233,104,0,.4);
       }
     }
-    transition: all 0.15s linear;
-    .show-or-hide{
+
+    .show-or-hide {
       cursor: pointer;
     }
+
     &:hover {
-      .game-id {
-        background: #680404;
-        color: #fff;
-      }
+      box-shadow: 0 5px 7px -3px #000;
       transform: translateY(-5px);
-      box-shadow: 0px 5px 7px -3px #000000;
+
+      .game-id {
+        color: #fff;
+        background: #680404;
+      }
     }
   }
 }
