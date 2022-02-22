@@ -80,3 +80,5 @@ ff2 addNewEnvironment|addENV <name> 添加新环境
 ## 2.2.6 版本
 1、解决cloneMobile问题
 
+## 2.2.7 版本
+1、解决styleLint样式问题
