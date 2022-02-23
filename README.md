@@ -1,8 +1,19 @@
-wlg-cli-temp 是wlg-cli 升级版
+
+# 一、简介
+![https://www.npmjs.com/package/wlg-cli-temp](https://img.shields.io/npm/v/wlg-cli-temp)
+![https://www.npmjs.com/package/wlg-cli-temp](https://img.shields.io/npm/dt/wlg-cli-temp)
+![https://github.com/wang12321/wlg-cli-temp](https://img.shields.io/github/languages/code-size/wang12321/wlg-cli-temp)
+![https://github.com/wang12321/wlg-cli-temp](https://img.shields.io/github/issues-raw/wang12321/wlg-cli-temp)
+![https://github.com/wang12321/wlg-cli-temp](https://img.shields.io/github/license/wang12321/wlg-cli-temp)
+
+wlg-cli-temp单页面脚手架 是wlg-cli 升级版
 目前wlg-cli已下架，全部使用wlg-cli-temp
 
-环境配置：node > 10
+建议环境配置：node > 10
 npm >= 6.7
+
+# 二、使用方法
+[思维导图](https://www.processon.com/view/link/615fa8757d9c0806d55a8067#map)
 
 1、全局安装
 ```
@@ -18,7 +29,7 @@ ff2 init <name>
 
 以下命令需要到当前项目跟目录下使用
 
-`
+```
 init <name> 初始化项目
 
 addTemp <name> 初始化模板文件
@@ -33,11 +44,14 @@ sentry 接入sentry
 
 qiankun 接入微前端
 
-`
+```
 
-[思维导图](https://www.processon.com/view/link/615fa8757d9c0806d55a8067#map)
+查看更多功能命令
+```
+ff2 -h 
+```
 
-
+# 三、版本信息
 ## 1.3.0 版本
 1、加入mobile下载链接
 
@@ -82,3 +96,6 @@ ff2 addNewEnvironment|addENV <name> 添加新环境
 
 ## 2.2.7 版本
 1、解决styleLint样式问题
+
+## 2.2.8 版本
+1、修改README.md信息
