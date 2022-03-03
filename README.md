@@ -102,3 +102,6 @@ ff2 addNewEnvironment|addENV <name> 添加新环境
 
 ## 2.2.9 版本
 1、gulp打包配置
+
+## 2.3.0 版本
+1、自动发布npm包,版本自动叠加，之后只会备注大更新信息

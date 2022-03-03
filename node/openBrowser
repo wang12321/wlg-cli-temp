@@ -1,0 +1,14 @@
+#! /usr/local/bin/node
+const childProcess = require('child_process');
+const exec = childProcess.exec;
+console.log(new Date(),'自动上传npm包');
+const cmdStr = 'nrm use npm && npm publish && nrm use taobao';
+exec(cmdStr, (err, stdout, stderr) => {
+     if (err){
+        console.warn(new Date(),'上传npm包执行失败');
+     } else {
+        console.warn(new Date(),' 上传npm包执行成功');
+     }
+});
+
+
