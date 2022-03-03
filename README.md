@@ -99,3 +99,6 @@ ff2 addNewEnvironment|addENV <name> 添加新环境
 
 ## 2.2.8 版本
 1、修改README.md信息
+
+## 2.2.9 版本
+1、gulp打包配置
