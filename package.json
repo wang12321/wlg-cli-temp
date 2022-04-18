@@ -1,6 +1,6 @@
 {
   "name": "wlg-cli-temp",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "单页面脚手架",
   "main": "index.js",
   "bin": {
@@ -33,7 +33,7 @@
     "download-git-repo": "^3.0.2",
     "figlet": "^1.5.0",
     "handlebars": "^4.7.7",
-    "inquirer": "^8.0.0",
+    "inquirer": "~8.0.0",
     "node-cmd": "^5.0.0",
     "open": "^8.0.2",
     "ora": "^5.4.0",
