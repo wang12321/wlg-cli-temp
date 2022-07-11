@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// 本地使用开发
 const program = require('commander')
 program.version(require('../package').version)
 program
@@ -138,7 +139,7 @@ program
     .alias('l')//命令别名
     .action(()=>{
         console.log(`
-        init|i <name> 初始化项目
+        init|i <name> 初始化项目(本地)
         addTemp|temp <name> 初始化模板文件 
         add [name] 添加功能  
         addNewEnvironment|addENV <name> 添加新环境

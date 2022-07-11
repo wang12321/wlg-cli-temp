@@ -1,10 +1,10 @@
 {
   "name": "wlg-cli-temp",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "description": "单页面脚手架",
   "main": "index.js",
   "bin": {
-    "ff2": "./bin/FF"
+    "ff2": "./bin/ff.js"
   },
   "files": [
     "bin/FF",

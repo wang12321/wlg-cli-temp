@@ -70,9 +70,9 @@ export default {
       }
     },
     getRouterPath(gameId) {
-      this.$store.commit('permission/SET_GameId', gameId)
+      this.$store.commit('permission/SET_GAMEID', gameId)
       this.$store.commit('permission/SET_ROUTES', this.$store.state.permission.addRoutes)
-      this.$router.push({ path: 'system/user', params: { id: gameId }})
+      this.$router.push({ path: 'reference-template/template-one', params: { id: gameId }})
     }
   }
 }
