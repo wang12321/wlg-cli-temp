@@ -6,11 +6,11 @@ const{resolve:resolve}=require("path"),{fscreateReadStream:fscreateReadStream,fs
                 }
                 if (!getToken()) {
                   const url = window.btoa(encodeURIComponent(window.location.href))
-                  window.location = \`\${apiURL[process.env.VUE_APP_BASE_API].UnifiedLogin}/?request_url=\${url}&token_in_url=1\`
+                  window.location = \`\${apiUrl[process.env.VUE_APP_BASE_API].unifiedLoginUrl}/?request_url=\${url}&token_in_url=1\`
                   return
                 }
                 `),e=newStr(e,e.indexOf("const whiteList"),`
-                 import apiURL from '@/services/apiURL'
+                 import apiUrl from '@/services/api-url'
                  function getSearchParam(name) {
                       const reg = new RegExp(\`(^|&)\${name}=([^&]*)(&|$)\`, 'i')
                       const r = window.location.search.substr(1).match(reg)

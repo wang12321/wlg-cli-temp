@@ -11,9 +11,9 @@ const{resolve:resolve}=require("path"),{fscreateReadStream:fscreateReadStream,fs
                     'gamelist',
                         `),e=newStr(e,e.indexOf("methods: {")+10,`
                     getSelectedGameId(gameID) {
-                          this.$store.commit('permission/SET_GameId', gameID)
+                          this.$store.commit('permission/SET_GAMEID', gameID)
                           this.$store.commit('permission/SET_ROUTES', this.$store.state.permission.addRoutes)
-                          this.$router.push({ path: 'system/user', params: { id: gameID }})
+                          this.$router.push({ path: 'reference-template/template-one', params: { id: gameID }})
                         },
                         `),Promise.resolve(e)):(errorLog(`src/layout/components/Navbar.vue文件修改失败!
                 请检查代码:
@@ -30,10 +30,10 @@ const{resolve:resolve}=require("path"),{fscreateReadStream:fscreateReadStream,fs
                 `),Promise.resolve(e)):(errorLog(`src/utils/auth.js文件修改失败!
                 请检查代码:
                 1、是否已添加：setIsGameIdKey 相关代码
-                `),Promise.reject(new Error("Error")))}return errorLog("找不到src/utils/auth.js目标文件，请查看命令是否使用正确"),Promise.reject(new Error("Error"))}(),a=await async function(){var r=`${t}/src/store/modules/permission.js`;if(await isFileExisted(r)){let e=await fscreateReadStream(r);return-1<e.indexOf("SET_ROUTES: (state, routes) => {")&&-1===e.indexOf("SET_GameId: (state, data) => {")?(e=newStr(e,0,`
+                `),Promise.reject(new Error("Error")))}return errorLog("找不到src/utils/auth.js目标文件，请查看命令是否使用正确"),Promise.reject(new Error("Error"))}(),a=await async function(){var r=`${t}/src/store/modules/permission.js`;if(await isFileExisted(r)){let e=await fscreateReadStream(r);return-1<e.indexOf("SET_ROUTES: (state, routes) => {")&&-1===e.indexOf("SET_GAMEID: (state, data) => {")?(e=newStr(e,0,`
                  import { getIsGameIdKey, setIsGameIdKey } from '@/utils/auth'
                 `),e=newStr(e,e.indexOf("SET_ROUTES: (state, routes) => {"),`
-                 SET_GameId: (state, data) => {
+                 SET_GAMEID: (state, data) => {
                     state.gameId = data
                     setIsGameIdKey(data)
                   },
@@ -46,7 +46,7 @@ const{resolve:resolve}=require("path"),{fscreateReadStream:fscreateReadStream,fs
                 }`),Promise.resolve(e)):(errorLog(`src/store/modules/permission.js文件修改失败!
                 请检查代码:
                 1、是否有: SET_ROUTES: (state, routes) => {
-                2、是否已添加：SET_GameId: (state, data) => {}
+                2、是否已添加：SET_GAMEID: (state, data) => {}
                 `),Promise.reject(new Error("Error")))}return errorLog("找不到src/store/modules/permission.js目标文件，请查看命令是否使用正确"),Promise.reject(new Error("Error"))}(),i=await async function(){var r=`${t}/src/permission.js`;if(await isFileExisted(r)){let e=await fscreateReadStream(r);r=e.match(/(\}\s*(\r?\n)*}\s*else([\s\S]*?)whiteList.indexOf\(to.path\)\s*!==\s*-1\)\s*\{)/g),r=r&&r[0];return-1<e.indexOf(r)&&-1===e.indexOf("store.state.permission.gameId")?(e=newStr(e,e.indexOf(r),`
                  // 如果没有gameId 回到首页
                   if (store.state.permission.gameId === '' && to.path !== '/dashboard') {
@@ -54,7 +54,7 @@ const{resolve:resolve}=require("path"),{fscreateReadStream:fscreateReadStream,fs
                   }
                   // 如果有gameId 点击首页，则清空gameId
                   if (store.state.permission.gameId !== '' && to.path === '/dashboard') {
-                    store.commit('permission/SET_GameId', '')
+                    store.commit('permission/SET_GAMEID', '')
                     store.commit('permission/SET_ROUTES', store.state.permission.addRoutes)
                     next('/')
                   }
@@ -64,19 +64,19 @@ const{resolve:resolve}=require("path"),{fscreateReadStream:fscreateReadStream,fs
                   next({ ...to, params: params })
                 }
                 `),e=newStr(e,e.indexOf("router.$addRoutes(accessRoutes"),`
-                 await store.dispatch('user/Gamelist')
+                 await store.dispatch('user/getGamelist')
                  `),Promise.resolve(e)):(errorLog(`src/permission.js文件修改失败!
                 请检查代码:
                 1、是否有: ${r}
                 2、是否已添加：store.state.permission.gameId
-                `),Promise.reject(new Error("Error")))}return errorLog("找不到src/permission.js目标文件，请查看命令是否使用正确"),Promise.reject(new Error("Error"))}(),o=await async function(){var e=`${t}/src/views/dashboard/index.vue`;if(await isFileExisted(e)){e=await fscreateReadStream(`${__dirname}/../PCFile/indexGame.txt`);return Promise.resolve(e)}return errorLog("找不到src/views/dashboard/index.vue目标文件，请查看命令是否使用正确"),Promise.reject(new Error("Error"))}(),n=await async function(){var r=`${t}/src/services/api.js`;if(await isFileExisted(r)){let e=await fscreateReadStream(r);return-1<e.indexOf("login(params) {")&&-1===e.indexOf("gamelist(params) {")?(e=newStr(e,e.indexOf("login(params) {"),`
-                gamelist(params) {
+                `),Promise.reject(new Error("Error")))}return errorLog("找不到src/permission.js目标文件，请查看命令是否使用正确"),Promise.reject(new Error("Error"))}(),o=await async function(){var e=`${t}/src/views/dashboard/index.vue`;if(await isFileExisted(e)){e=await fscreateReadStream(`${__dirname}/../PCFile/indexGame.txt`);return Promise.resolve(e)}return errorLog("找不到src/views/dashboard/index.vue目标文件，请查看命令是否使用正确"),Promise.reject(new Error("Error"))}(),n=await async function(){var r=`${t}/src/services/api.js`;if(await isFileExisted(r)){let e=await fscreateReadStream(r);return-1<e.indexOf("postUserLoginApi(params) {")&&-1===e.indexOf("getGamelistApi(params) {")?(e=newStr(e,e.indexOf("postUserLoginApi(params) {"),`
+                getGamelistApi(params) {
                     return request.get(\`\${userUrl}/user/gamelist\`, params)
                   },
                 `),Promise.resolve(e)):(errorLog(`src/services/api.js文件修改失败!
                 请检查代码:
-                1、是否有：const accounts = apiURL[process.env.VUE_APP_BASE_API]
-                2、是否已添加：accounts = apiURL['production'] 相关代码
+                1、是否有：const accounts = apiUrl[process.env.VUE_APP_BASE_API]
+                2、是否已添加：accounts = apiUrl['production'] 相关代码
                 `),Promise.reject(new Error("Error")))}return errorLog("找不到src/services/api.js目标文件，请查看命令是否使用正确"),Promise.reject(new Error("Error"))}(),m=await async function(){var r=`${t}/src/store/getters.js`;if(await isFileExisted(r)){let e=await fscreateReadStream(r);return-1<e.indexOf("sidebar: state => state.app.sidebar,")&&-1===e.indexOf("gamelist: state => state.user.gamelist,")?(e=newStr(e,e.indexOf("sidebar: state => state.app.sidebar,"),`
                     gamelist: state => state.user.gamelist,
                 `),Promise.resolve(e)):(errorLog(`src/store/getters.js文件修改失败!
@@ -90,10 +90,10 @@ const{resolve:resolve}=require("path"),{fscreateReadStream:fscreateReadStream,fs
                     state.gamelist = data
                   },
                 `),e=newStr(e,e.indexOf("const actions = {")+"const actions = {".length,`
-                   Gamelist({ commit, state }) {
-                    const { gamelist } = user
+                   getGamelist({ commit, state }) {
+                    const { getGamelistApi } = userModule
                     return new Promise((resolve, reject) => {
-                      gamelist().then(response => {
+                      getGamelistApi().then(response => {
                         const { data } = response
                         commit('SET_Gamelist', data)
                         resolve(data)

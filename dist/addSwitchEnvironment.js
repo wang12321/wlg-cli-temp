@@ -29,14 +29,14 @@ const{resolve:resolve}=require("path"),{fscreateReadStream:fscreateReadStream,fs
                 `),Promise.resolve(e)):(errorLog(`src/utils/auth.js文件修改失败!
                 请检查代码:
                 1、是否已添加：setIsUseMasterApiKey 相关代码
-                `),Promise.reject(new Error("Error")))}return errorLog("找不到src/utils/auth.js目标文件，请查看命令是否使用正确"),Promise.reject(new Error("Error"))}(),i=await async function(){var r=`${e}/src/services/api.js`;if(await isFileExisted(r)){let e=await fscreateReadStream(r);return-1<e.indexOf("const accounts = apiURL[process.env.VUE_APP_BASE_API]")&&-1===e.indexOf("accounts = apiURL['production']")?(e=e.replace("const accounts = apiURL[process.env.VUE_APP_BASE_API]",`
+                `),Promise.reject(new Error("Error")))}return errorLog("找不到src/utils/auth.js目标文件，请查看命令是否使用正确"),Promise.reject(new Error("Error"))}(),i=await async function(){var r=`${e}/src/services/api.js`;if(await isFileExisted(r)){let e=await fscreateReadStream(r);return-1<e.indexOf("const accounts = apiUrl[process.env.VUE_APP_BASE_API]")&&-1===e.indexOf("accounts = apiURL['production']")?(e=e.replace("const accounts = apiUrl[process.env.VUE_APP_BASE_API]",`
                 import { getIsUseMasterApiKey } from '@/utils/auth'
-                let accounts = apiURL[process.env.VUE_APP_BASE_API]
+                let accounts = apiUrl[process.env.VUE_APP_BASE_API]
                 if (getIsUseMasterApiKey() === 'true' && process.env.NODE_ENV.indexOf('development') > -1) {
-                    accounts = apiURL['production']
+                    accounts = apiUrl['production']
                 }
                 `),Promise.resolve(e)):(errorLog(`src/services/api.js文件修改失败!
                 请检查代码:
-                1、是否有：const accounts = apiURL[process.env.VUE_APP_BASE_API]
-                2、是否已添加：accounts = apiURL['production'] 相关代码
+                1、是否有：const accounts = apiUrl[process.env.VUE_APP_BASE_API]
+                2、是否已添加：accounts = apiUrl['production'] 相关代码
                 `),Promise.reject(new Error("Error")))}return errorLog("找不到src/services/api.js目标文件，请查看命令是否使用正确"),Promise.reject(new Error("Error"))}();await fscreateWriteStream(`${e}/src/utils`,"auth.js",t),log("src/utils/auth.js 文件修改成功"),await fscreateWriteStream(`${e}/src/layout/components`,"Navbar.vue",s),log("src/layout/components/Navbar.vue文件修改成功"),await fscreateWriteStream(`${e}/src/services`,"api.js",i),log("src/services/api.js文件修改成功"),run("npm run lint:fix",{cwd:`${e}`})}catch(e){if(errorLog("addSwitchEnvironment 目标代码出错，请按上述报错信息检查代码"),r&&0!==r.length)return Promise.reject(()=>{})}};
