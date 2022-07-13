@@ -13,8 +13,13 @@ const{resolve:resolve}=require("path"),{fscreateReadStream:fscreateReadStream,fs
                     getSelectedGameId(gameID) {
                           this.$store.commit('permission/SET_GAMEID', gameID)
                           this.$store.commit('permission/SET_ROUTES', this.$store.state.permission.addRoutes)
-                          this.$router.push({ path: 'reference-template/template-one', params: { id: gameID }})
-                        },
+                            if (this.$route.name.toLowerCase() === 'dashboard') {
+                                this.$router.push({ path: 'reference-template/template-one', params: { id: gameID }})
+                              } else {
+                                this.$router.go(0)
+                                // this.$router.push({ name: this.$route.name, params: { id: gameID }})
+                              }
+                            },
                         `),Promise.resolve(e)):(errorLog(`src/layout/components/Navbar.vue文件修改失败!
                 请检查代码:
                 1、是否有: <screenfull

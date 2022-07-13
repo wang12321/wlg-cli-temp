@@ -1,7 +1,7 @@
-const{resolve:resolve}=require("path"),{fscreateReadStream:fscreateReadStream,fscreateWriteStream:fscreateWriteStream,isFileExisted:isFileExisted,newStr:newStr}=require("./common.js"),{run:run}=require("runjs"),chalk=require("chalk"),log=e=>console.log(chalk.green(e)),errorLog=e=>console.log(chalk.red(e));module.exports=async r=>{"string"!=typeof r&&(r=""),log("resolve   : "+resolve("./")+"/"+r);let e=resolve("./")+(r&&0!==r.length?`/${r}`:"");try{var o=await async function(){var r=`${e}/src/permission.js`;if(await isFileExisted(r)){let e=await fscreateReadStream(r);return-1<e.indexOf("if (hasToken) {")&&-1===e.indexOf("window.location.search !== '' && getSearchParam('token')")?(e=newStr(e,e.indexOf("if (hasToken) {"),`
+const{resolve:resolve}=require("path"),{fscreateReadStream:fscreateReadStream,fscreateWriteStream:fscreateWriteStream,isFileExisted:isFileExisted,newStr:newStr}=require("./common.js"),{run:run}=require("runjs"),chalk=require("chalk"),log=e=>console.log(chalk.green(e)),errorLog=e=>console.log(chalk.red(e));module.exports=async r=>{"string"!=typeof r&&(r=""),log("resolve   : "+resolve("./")+"/"+r);let e=resolve("./")+(r&&0!==r.length?`/${r}`:"");try{var t=await async function(){var r=`${e}/src/permission.js`;if(await isFileExisted(r)){let e=await fscreateReadStream(r);return-1<e.indexOf("if (hasToken) {")&&-1===e.indexOf("window.location.search !== '' && getSearchParam('token')")?(e=newStr(e,e.indexOf("if (hasToken) {"),`
                 if (window.location.search !== '' && getSearchParam('token')) {
-                  setToken('admin-token') // 为了测试先默认设置一个
-                  // setToken(getSearchParam('token'))
+                  // setToken('admin-token') // 为了测试先默认设置一个
+                  setToken(getSearchParam('token'))
                   window.history.replaceState({}, document.title, getRemovedTokenInUrl());
                 }
                 if (!getToken()) {
@@ -30,7 +30,7 @@ const{resolve:resolve}=require("path"),{fscreateReadStream:fscreateReadStream,fs
                 1、是否有: if (hasToken) {
                 2、是否已添加：window.location.search !== \'\' && getSearchParam(\'token\')
                 3、是否改变： import { getToken } from '@/utils/auth'
-                `),Promise.reject(new Error("Error")))}return errorLog("找不到src/permission.js目标文件，请查看命令是否使用正确"),Promise.reject(new Error("Error"))}(),t=(n=`${e}/src/views/login/index.vue`,await(await isFileExisted(n)?Promise.resolve(`
+                `),Promise.reject(new Error("Error")))}return errorLog("找不到src/permission.js目标文件，请查看命令是否使用正确"),Promise.reject(new Error("Error"))}(),o=(s=`${e}/src/views/login/index.vue`,await(await isFileExisted(s)?Promise.resolve(`
                 <template>
                   <div></div>
                 </template>
@@ -40,4 +40,18 @@ const{resolve:resolve}=require("path"),{fscreateReadStream:fscreateReadStream,fs
                   name: 'Index'
                 }
                 </script>
-            `):(errorLog("找不到src/views/login/index.vue目标文件，请查看命令是否使用正确"),Promise.reject(new Error("Error")))));await fscreateWriteStream(`${e}/src`,"permission.js",o),log("src/permission.js文件修改成功"),await fscreateWriteStream(`${e}/src/views/login`,"index.vue",t),log("src/views/login/index.vue文件修改成功"),run("npm run lint:fix",{cwd:`${e}`})}catch(e){if(errorLog("addUnifiedLogin 目标代码出错，请按上述报错信息检查代码"),r&&0!==r.length)return Promise.reject(()=>{})}var n};
+            `):(errorLog("找不到src/views/login/index.vue目标文件，请查看命令是否使用正确"),Promise.reject(new Error("Error"))))),n=await async function(){var r=`${e}/src/store/modules/user.js`;if(await isFileExisted(r)){let e=await fscreateReadStream(r);r=await fscreateReadStream(`${__dirname}/../PCFile/tokenAnalysis.txt`);e=newStr(e,e.indexOf("const getDefaultState = () => {"),r);r=e.match(/(const {\s*postUserInfoApi[\s\S]*?}\)\s*}\))/g),r=r&&r[0];return e=e.replace(r,`
+            return new Promise((resolve, reject) => {
+      const token = getToken()
+      const strToken = token.substring(token.indexOf('.') + 1, token.length)
+      const str = strToken.substring(0, strToken.indexOf('.'))
+      const response = decodeURIComponent(escape(atob(decode(str))))
+      const data = JSON.parse(response)
+      if (!data) {
+        return reject('Verification failed, please Login again.')
+      }
+      const { user_name: name } = data
+      commit('SET_NAME', name)
+      resolve(Object.assign({ ...data }, { permission: [1] }))
+    })
+    `),Promise.resolve(e)}return errorLog("找不到src/store/modules/user.js目标文件，请查看命令是否使用正确"),Promise.reject(new Error("Error"))}();await fscreateWriteStream(`${e}/src`,"permission.js",t),log("src/permission.js文件修改成功"),await fscreateWriteStream(`${e}/src/views/login`,"index.vue",o),log("src/views/login/index.vue文件修改成功"),await fscreateWriteStream(`${e}/src/store/modules`,"user.js",n),log("src/store/modules/user.js文件修改成功"),run("npm run lint:fix",{cwd:`${e}`})}catch(e){if(errorLog("addUnifiedLogin 目标代码出错，请按上述报错信息检查代码"),r&&0!==r.length)return Promise.reject(()=>{})}var s};
