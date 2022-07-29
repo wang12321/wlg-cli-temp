@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "build": "gulp",
-    "node": "node node/openBrowser",
+    "npm:publish": "node node/openBrowser",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublishOnly": "standard-version",
     "version": "standard-version"
@@ -51,7 +51,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "node node/openBrowser"
+      "pre-push": ""
     }
   }
 }

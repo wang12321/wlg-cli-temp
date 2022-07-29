@@ -1,11 +1,12 @@
-const{promisify:promisify}=require("util"),{resolve:resolve}=require("path"),{fscreateReadStream:fscreateReadStream,fscreateWriteStream:fscreateWriteStream,newStr:newStr}=require("./common.js"),{run:run}=require("runjs"),inquirer=require("inquirer"),chalk=require("chalk"),log=e=>console.log(chalk.green(e)),errorLog=e=>console.log(chalk.red(e));module.exports=async()=>{log("resolve   : "+resolve("./")),run("npm install @sentry/browser",{cwd:`${resolve("./")}`}),run("npm install @sentry/integrations",{cwd:`${resolve("./")}`});!async function(){var e=`${resolve("./")}/src/main.js`;let i=await fscreateReadStream(e);-1<i.indexOf("Sentry.init({")?errorLog("查看代码main.js 是否有 Sentry.init 相关代码"):inquirer.prompt([{type:"input",name:"url",message:"请输入判断域名地址,以、分割"},{type:"input",name:"dsn",message:"请输入dsn,以、分割。（请按域名的顺序对应）"}]).then(async e=>{console.log("answers",e);var r="",n=0<e.url.length?e.url.split("、"):[],s=0<e.dsn.length?e.dsn.split("、"):[];if(0<n.length&&n.length===s.length){let t="";n.forEach((e,r)=>{console.log(e,r),0<r&&r<n.length-1&&(t+="else "),t+=`
+const{promisify:promisify}=require("util"),{resolve:resolve}=require("path"),{fscreateReadStream:fscreateReadStream,fscreateWriteStream:fscreateWriteStream,newStr:newStr}=require("./common.js"),{run:run}=require("runjs"),inquirer=require("inquirer"),chalk=require("chalk"),log=e=>console.log(chalk.green(e)),errorLog=e=>console.log(chalk.red(e));module.exports=async()=>{log("resolve   : "+resolve("./")),run("npm install @sentry/browser@5.4.3",{cwd:`${resolve("./")}`}),run("npm install @sentry/integrations@5.4.2",{cwd:`${resolve("./")}`});!async function(){var e=`${resolve("./")}/src/main.js`;let i=await fscreateReadStream(e);-1<i.indexOf("Sentry.init({")?errorLog("查看代码main.js 是否有 Sentry.init 相关代码"):inquirer.prompt([{type:"input",name:"url",message:"请输入判断域名地址,以、分割"},{type:"input",name:"dsn",message:"请输入dsn,以、分割。（请按域名的顺序对应）"}]).then(async e=>{console.log("answers",e);var r="",n=0<e.url.length?e.url.split("、"):[],s=0<e.dsn.length?e.dsn.split("、"):[];if(0<n.length&&n.length===s.length){let t="";n.forEach((e,r)=>{console.log(e,r),0<r&&r<n.length-1&&(t+="else "),t+=`
 if (window.location.host === '${e}') {
   Sentry.init({
     dsn: '${s[r]}',
     integrations: [
       new Integrations.Vue({
         Vue,
-        attachProps: true
+        attachProps: true,
+        logErrors: true,
       })
     ]
   })
@@ -24,7 +25,8 @@ import * as Integrations from '@sentry/integrations'
     integrations: [
       new Integrations.Vue({
         Vue,
-        attachProps: true
+        attachProps: true,
+        logErrors: true,
       })
     ]
   })
