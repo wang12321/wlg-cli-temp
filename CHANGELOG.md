@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/wang12321/wlg-cli-temp/compare/v2.4.0...v2.5.0) (2022-07-29)
+
+
+### Features
+
+* 1、sentry及qiankun指定版本 2、sentry打印日志 3、新增自动展示版本变更信息工具 ([5cf377a](https://github.com/wang12321/wlg-cli-temp/commit/5cf377a16d5acea0ecda92fc96dabb1981654729))
+
+
+### Bug Fixes
+
+* 注释gulp打包版本自动更新代码 ([00a4fb6](https://github.com/wang12321/wlg-cli-temp/commit/00a4fb6c2423a0e053bf3b6505bee1103ecdf9cb))
+
 ## 2.4.0 (2022-07-29)
 
 
