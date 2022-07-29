@@ -52,6 +52,9 @@ ff2 -h
 ```
 
 # 三、版本信息
+
+自动变更记录详见：[CHANGELOG](CHANGELOG.md)
+
 ## 1.3.0 版本
 1、加入mobile下载链接
 
