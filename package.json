@@ -1,6 +1,6 @@
 {
   "name": "wlg-cli-temp",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "单页面脚手架",
   "main": "index.js",
   "bin": {
