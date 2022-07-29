@@ -1,6 +1,6 @@
 {
   "name": "wlg-cli-temp",
-  "version": "2.3.13",
+  "version": "2.4.0",
   "description": "单页面脚手架",
   "main": "index.js",
   "bin": {
@@ -14,7 +14,9 @@
   "scripts": {
     "build": "gulp",
     "node": "node node/openBrowser",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "standard-version",
+    "version": "standard-version"
   },
   "keywords": [
     "cli",
@@ -44,7 +46,8 @@
     "husky": "~4.2.5",
     "gulp-bump": "^3.2.0",
     "gulp": "^3.9.1",
-    "gulp-uglify": "^3.0.2"
+    "gulp-uglify": "^3.0.2",
+    "standard-version": "~9.3.1"
   },
   "husky": {
     "hooks": {
