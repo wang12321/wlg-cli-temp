@@ -4,7 +4,7 @@
   "description": "单页面脚手架",
   "main": "index.js",
   "bin": {
-    "ff2": "./bin/FF"
+    "ff2": "bin/FF"
   },
   "files": [
     "bin/FF",

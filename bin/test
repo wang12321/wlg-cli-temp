@@ -125,6 +125,13 @@ program
     .usage('接入微前端') //-h 打印的用户提示
     .alias('qk')//命令别名
 
+program
+    .command('ip-replace <path>')
+    .description('ip替换 指定路径')
+    .action(require('../lib/ip-replace.js'))
+    .usage('ip替换') //-h 打印的用户提示
+    .alias('ip')//命令别名
+
 // 添加一些有用的信息到help选项
 program.on('--help', () => {
     console.log()
@@ -147,6 +154,7 @@ program
         deleteTagsViews|delT 删除导航标签
         sentry|s 接入sentry
         qiankun|qk 接入微前端
+        ip-replace|ip <path> ip替换
         `)
     })
 
