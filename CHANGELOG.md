@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.6.3](https://github.com/wang12321/wlg-cli-temp/compare/v2.6.2...v2.6.3) (2022-08-02)
+
+
+### Bug Fixes
+
+* 匹配多个IP替换 ([dc1a862](https://github.com/wang12321/wlg-cli-temp/commit/dc1a8623db084251e0cf730b9351371a60fd6fc9))
+
 ### [2.6.2](https://github.com/wang12321/wlg-cli-temp/compare/v2.6.1...v2.6.2) (2022-08-02)
 
 ### [2.6.1](https://github.com/wang12321/wlg-cli-temp/compare/v2.6.0...v2.6.1) (2022-08-02)
