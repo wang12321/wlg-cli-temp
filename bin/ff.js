@@ -23,8 +23,6 @@ program
     .option('New', '添加菜单new！标志')//选项
     .option('TagsView', '添加导航标签(由Layout布局决定)')
     .option('Breadcrumb', '添加面包屑')
-    .option('GameShow', '添加展示游戏平台')
-    .option('UnifiedLogin', '接入统一登入')
     .option('SwitchEnvironment', '添加切换环境按钮')
     .option('HeaderSearch', '添加菜单搜索')
 
@@ -47,19 +45,6 @@ program
     .usage('添加切换环境按钮') //-h 打印的用户提示
     .alias('addS')//命令别名
 
-program
-    .command('addUnifiedLogin')
-    .description('接入统一登入')
-    .action(require('../lib/addUnifiedLogin.js'))
-    .usage('接入统一登入') //-h 打印的用户提示
-    .alias('addU')//命令别名
-
-program
-    .command('addGameShow')
-    .description('添加展示游戏平台')
-    .action(require('../lib/addGameShow.js'))
-    .usage('添加展示游戏平台') //-h 打印的用户提示
-    .alias('addG')//命令别名
 
 program
     .command('updateLayout')
