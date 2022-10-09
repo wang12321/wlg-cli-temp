@@ -1,13 +1,13 @@
 {
   "name": "zkyc-ff-cli",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "单页面脚手架",
   "main": "index.js",
   "bin": {
-    "ff2": "bin/FF"
+    "zkyc": "bin/zkyc"
   },
   "files": [
-    "bin/FF",
+    "bin/zkyc",
     "dist",
     "PCFile"
   ],

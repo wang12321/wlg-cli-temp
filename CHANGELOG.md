@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/wang12321/wlg-cli-temp/compare/v1.1.1...v1.1.2) (2022-10-09)
+
+
+### Bug Fixes
+
+* 更新发布版本 ([1158549](https://github.com/wang12321/wlg-cli-temp/commit/1158549864de7f64a09438585dab5c6b70f9bf1a))
+
 ### [1.1.1](https://github.com/wang12321/wlg-cli-temp/compare/v1.1.0...v1.1.1) (2022-10-09)
 
 ## 1.1.0 (2022-10-09)
