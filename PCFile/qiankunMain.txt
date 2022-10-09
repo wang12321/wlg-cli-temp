@@ -1,0 +1,20 @@
+import { registerMicroApps, start } from 'qiankun'
+
+// 注册子应用
+registerMicroApps([
+  {
+    name: 'vue app',			// 子应用名称
+    entry: '//localhost:7101/',	// 子应用入口
+    container: '#vue',	// 子应用所在容器
+    activeRule: '/app/vue'			// 子应用触发规则（路径）
+  }
+])
+
+window.qiankunStarted = false
+
+// 启动默认应用
+// setDefaultMountApp('/')
+
+// 开启服务,配置项见官方文档
+start()
+

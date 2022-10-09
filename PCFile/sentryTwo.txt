@@ -1,0 +1,9 @@
+Sentry.configureScope((scope) => {
+      scope.setTag(`${error.response.status}`, `${error.response.data.errmsg || error.response.data.message}`)
+      scope.setLevel('warning')
+      scope.setExtra('setExtra', error)
+      scope.setExtra('localStorage', window.localStorage ? window.localStorage.valueOf() : 'localStorage无法获得')
+      scope.setExtra('sessionStorage', window.sessionStorage ? window.sessionStorage.valueOf() : 'sessionStorage无法获得')
+    })
+    Sentry.captureMessage(`${error.response.status}${error.response.data.errmsg || error.response.data.message}${error.config.url}`, 'info')
+

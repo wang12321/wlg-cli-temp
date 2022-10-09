@@ -1,0 +1,10 @@
+Sentry.configureScope((scope) => {
+        scope.setTag('errno', `${response.data.errmsg || response.data.message}`)
+        scope.setLevel('warning')
+        scope.setExtra('returnDataApi', `${response.data}`)
+        scope.setExtra('setExtra', response.config)
+        scope.setExtra('localStorage', window.localStorage ? window.localStorage.valueOf() : 'localStorage无法获得')
+        scope.setExtra('sessionStorage', window.sessionStorage ? window.sessionStorage.valueOf() : 'sessionStorage无法获得')
+      })
+    Sentry.captureMessage(`errno不为0 ${response.data.errmsg || response.data.message} ${response.config.url}`, 'info')
+
