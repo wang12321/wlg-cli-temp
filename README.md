@@ -36,9 +36,6 @@ updateLayout 修改layout布局
 
 deleteTagsViews 删除导航标签
 
-sentry 接入sentry
-
-qiankun 接入微前端
 
 ```
 
