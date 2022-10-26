@@ -54,12 +54,12 @@ program
     .usage('修改layout布局') //-h 打印的用户提示
     .alias('upL')//命令别名
 
-program
-    .command('addNavBarMenu')
-    .description('添加导航栏显示一级目录')
-    .action(require('../dist/addNavBarMenu.js'))
-    .usage('添加导航栏显示一级目录') //-h 打印的用户提示
-    .alias('addNBM')//命令别名
+// program
+//     .command('addNavBarMenu')
+//     .description('添加导航栏显示一级目录')
+//     .action(require('../dist/addNavBarMenu.js'))
+//     .usage('添加导航栏显示一级目录') //-h 打印的用户提示
+//     .alias('addNBM')//命令别名
 
 program
     .command('addNewEnvironment <name>')
@@ -75,12 +75,12 @@ program
     .usage('添加导航标签') //-h 打印的用户提示
     .alias('addT')//命令别名
 
-program
-    .command('deleteNavBarMenu')
-    .description('删除导航栏显示一级目录')
-    .action(require('../dist/deleteNavBarMenu.js'))
-    .usage('删除导航栏显示一级目录') //-h 打印的用户提示
-    .alias('delNBM')//命令别名
+// program
+//     .command('deleteNavBarMenu')
+//     .description('删除导航栏显示一级目录')
+//     .action(require('../dist/deleteNavBarMenu.js'))
+//     .usage('删除导航栏显示一级目录') //-h 打印的用户提示
+//     .alias('delNBM')//命令别名
 
 program
     .command('deleteTagsViews')
@@ -96,19 +96,19 @@ program
     .usage('<name> 初始化模板文件 \n cd到目标文件 name不加.vue是目录文件夹下建立index.vue \n 如果需要在已有文件下新增vue文件，name可以是路径。\n 如（sysetm/user.vue）') //-h 打印的用户提示
     .alias('temp')//命令别名
 
-program
-    .command('sentry')
-    .description('接入sentry')
-    .action(require('../dist/sentry.js'))
-    .usage('接入sentry') //-h 打印的用户提示
-    .alias('s')//命令别名
+// program
+//     .command('sentry')
+//     .description('接入sentry')
+//     .action(require('../dist/sentry.js'))
+//     .usage('接入sentry') //-h 打印的用户提示
+//     .alias('s')//命令别名
 
-program
-    .command('qiankun')
-    .description('接入微前端')
-    .action(require('../dist/qiankun.js'))
-    .usage('接入微前端') //-h 打印的用户提示
-    .alias('qk')//命令别名
+// program
+//     .command('qiankun')
+//     .description('接入微前端')
+//     .action(require('../dist/qiankun.js'))
+//     .usage('接入微前端') //-h 打印的用户提示
+//     .alias('qk')//命令别名
 
 // 添加一些有用的信息到help选项
 program.on('--help', () => {
@@ -130,9 +130,6 @@ program
         addNewEnvironment|addENV <name> 添加新环境
         updateLayout|upL 修改layout布局
         deleteTagsViews|delT 删除导航标签
-        sentry|s 接入sentry
-        qiankun|qk 接入微前端
-        ip-replace|ip <path> ip替换
         `)
     })
 
