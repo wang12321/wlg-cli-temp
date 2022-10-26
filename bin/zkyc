@@ -20,7 +20,7 @@ program
     .command('add [name]')
     .description('添加集合,name可选可配')
     .action(require('../dist/add.js'))
-    .usage('[name] 添加集合,name可选可配,或者 ff add 选择功能') //-h 打印的用户提示
+    .usage('[name] 添加集合,name可选可配,或者 zkyc add 选择功能') //-h 打印的用户提示
     .option('New', '添加菜单new！标志')//选项
     .option('TagsView', '添加导航标签(由Layout布局决定)')
     .option('Breadcrumb', '添加面包屑')
@@ -113,7 +113,7 @@ program
 // 添加一些有用的信息到help选项
 program.on('--help', () => {
     console.log()
-    console.log(`1、详细信息可以使用-h来展示 例如：ff2 add -h \n2、这里面命令包含的PC和Mobile，如果是Mobile会标注说明，未标注的是PC。PC和Mobile命令会对其校验
+    console.log(`1、详细信息可以使用-h来展示 例如：zkyc add -h \n2、这里面命令包含的PC和Mobile，如果是Mobile会标注说明，未标注的是PC。PC和Mobile命令会对其校验
     `)
     console.log()
 })
